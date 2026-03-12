@@ -1,0 +1,4 @@
+com/studenttracker/model/Student.class
+com/studenttracker/view/StudentView.class
+com/studenttracker/App.class
+com/studenttracker/controller/StudentController.class

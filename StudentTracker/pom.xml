@@ -1,12 +1,12 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.StudentTracke</groupId>
-  <artifactId>StudentTracke</artifactId>
+  <groupId>com.studenttracker</groupId>
+  <artifactId>StudentTracker</artifactId>
   <version>1.0</version>
 
   <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -24,7 +24,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
         <configuration>
-          <mainClass>com.StudentTracke.Main</mainClass>
+          <mainClass>com.studenttracker.App</mainClass>
         </configuration>
       </plugin>
     </plugins>
