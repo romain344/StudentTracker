@@ -2,6 +2,7 @@ package com.studenttracker.controller;
 
 import com.studenttracker.model.Student;
 import com.studenttracker.view.StudentView;
+import com.studenttracker.view.detail;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,25 +12,25 @@ public class StudentController {
 
     public StudentController(StudentView view) {
         this.view = view;
-        view.addButton.setOnAction(e -> addStudent());
+
+        view.addButton.setOnAction(e -> add());
+
+        view.studentList.setOnMouseClicked(e -> {
+            int index = view.studentList.getSelectionModel().getSelectedIndex();
+            if (index >= 0) {
+                Student student = students.get(index);
+                new detail().show(student, view.studentList, index);
+            }
+        });
     }
 
-    private void addStudent() {
+private void add() {
         String name = view.nameField.getText();
-        String gradeText = view.gradeField.getText();
-        double grade;
-        try {
-            grade = Double.parseDouble(gradeText);
-        } catch (NumberFormatException ex) {
-            // ignore invalid input or show a message
-            return;
-        }
 
-        Student s = new Student(name, grade);
+        Student s = new Student(name);
         students.add(s);
         view.studentList.getItems().add(s.toString());
 
         view.nameField.clear();
-        view.gradeField.clear();
     }
 }

@@ -1,15 +1,23 @@
 package com.studenttracker.model;
 
+import java.util.Map;
+
 public class Student {
     private String name;
-    private Double grade;
+    private Map<String, Double> materials;
 
-    public Student(String name, Double grade) {
-        // this is a clase for name and garde
+    public Student(String name, Map<String, Double> materials) {
         this.name = name;
-        // for nota
-        this.grade = grade;
-        // for grade
+        this.materials = materials;
+    }
+
+    public Student(String name) {
+        this(name, new java.util.HashMap<>());
+    }
+
+    public void addMaterial(String material, Double grade) {
+        // this is a clase for add material and grade
+        materials.put(material, grade);
     }
 
     public String getName() {
@@ -17,14 +25,20 @@ public class Student {
         return name;
     }
 
-    public Double getGrade() {
-        // the clase for to recover the value for grade
-        return grade;
+    public Map<String, Double> getMaterials() {
+        return materials;
+    }
+
+    public double getAverage() {
+        return materials.values().stream()
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);
     }
 
     @Override
     public String toString() {
-        // to recover name and grade
-        return name + " - grade " + grade;
+        if (materials.isEmpty()) return name + " - Moyenne: --";
+        return String.format("%s - Moyenne: %.2f", name, getAverage());
     }
 }
